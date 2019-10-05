@@ -44,14 +44,14 @@ H1l=blkdiag(H1cell{:});
 
 cvx_begin quiet
     variable u(2*H,1);
-    x = Al * vertcat(P0,u);
-    minimize((x-ref)'*Ql*(x-ref) + u'*Rl*u);
+    z = Al * vertcat(P0,u);
+    minimize((z-ref)'*Ql*(z-ref) + u'*Rl*u);
 subject to 
     g = repelem([ylim],H)';
-    horzcat(G1l,g) * vertcat(x,1) <= 0;
+    horzcat(G1l,g) * vertcat(z,1) <= 0;
     
     h = repelem([-vlim],H)';
-    horzcat(H1l,h) * vertcat(u,1) <= 0;
+    horzcat(H1l,h) * vertcat(z,1) <= 0;
     
 cvx_end 
 end
