@@ -19,7 +19,7 @@ ref=reshape(ref,[2*size(ref,2) 1]);
 %State Matrix:
 A = [1 0; 0 1];
 %Input Matrix:
-B = [1 0; 0 1];
+B = [Ts 0; 0 Ts];
 %matrix for the constraints: 
 ylim=-0.6;
 G1=[0 -1]; %To extract the y position
